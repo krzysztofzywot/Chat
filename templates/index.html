@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Flack Main Page
+
+{% endblock %}
+
+{% block navbar_items %}
+
+<li class="nav-item">
+  <a class="nav-link" id="newRoom" style="visibility: hidden" href="{{ url_for('create_room') }}">Create new room</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" id="seeRooms" style="visibility: hidden" href="{{ url_for('channels_list') }}">See all rooms</a>
+</li>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="welcome">
+<form id="submitUsername" style="visibility: hidden">
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" id="username" aria-describedby="userHelp" placeholder="Enter your username">
+    <small id="userHelp" class="form-text text-muted">Please enter your username that will be used in chat rooms.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='welcome.js') }}"></script>
+{% endblock %}

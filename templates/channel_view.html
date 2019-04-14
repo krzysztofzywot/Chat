@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Chat - {{ channelName }}
+
+{% endblock %}
+
+{% block body %}
+
+<h4>Welcome to {{ channelName}} </h4>
+<br>
+
+<div class="container" id="messages">
+  {% for message in messages %}
+    {% if message.is_info_message %}
+    <div class="row">
+      <div class="col-8">
+        <div class="message-info">
+          {{ message.message }}
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="row">
+      <div class="col-8">
+        <div class="message">
+          Message by {{ message.username }} on {{ message.date }} <br>
+            {{ message.message }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <input type="text" class="form-control" id="userMessage" placeholder="Enter message" maxlength="300" autofocus>
+      <div class="invalid-feedback">Message must be at least 2 characters long.</div>
+    </div>
+    <div class="col">
+      <button type="button" class="myButton" id="messageSent">Send</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}

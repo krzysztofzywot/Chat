@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Chatrooms List
+
+{% endblock %}
+
+{% block body %}
+
+{% if channels %}
+<ul>
+{% for channel in channels %}
+
+<li><a href="{{ url_for('view_channel', id=channel.id) }}">{{ channel.name }}</a> - Created by: <i>{{ channel.createdBy }}</i>
+ Users: {{ channel.users }}</li>
+
+{% endfor %}
+</ul>
+{% else %}
+
+<h4>No channels are currently open.</h4>
+
+{% endif %}
+
+{% endblock %}

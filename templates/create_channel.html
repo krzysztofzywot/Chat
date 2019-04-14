@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Create new channel
+
+{% endblock %}
+
+{% block body %}
+
+<form id="createChannel">
+  <div class="form-group">
+    <label>Set channel name</label>
+    <input type="text" class="form-control" id="channelName" placeholder="Channel name">
+  </div>
+  <button type="submit" class="btn btn-primary" id="submit" disabled>Submit</button>
+</form>
+<div class="alert alert-danger" id="lengthAlert" role="alert" style="display: none">Channel name must be at least 4 characters long!</div>
+<div class="alert alert-danger" id="duplicateAlert" role="alert" style="display: none">Channel with such name already exists!</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='validate.js') }}"></script>
+{% endblock %}
